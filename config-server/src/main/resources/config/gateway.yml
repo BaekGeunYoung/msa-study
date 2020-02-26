@@ -4,9 +4,12 @@ zuul:
     auth:
       path: /auth/**
       serviceId: auth
+      sensitiveHeaders: Cookie, Set-Cookie
     other1:
       path: /other1/**
       serviceId: other1
+      sensitiveHeaders: Cookie, Set-Cookie
     other2:
       path: /other2/**
       serviceId: other2
+      sensitiveHeaders: Cookie, Set-Cookie
