@@ -1,3 +1,9 @@
 spring:
   application:
     name: "gateway"
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+server:
+  port: 0
