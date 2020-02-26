@@ -1,3 +1,9 @@
 spring:
   application:
     name: "other1"
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+server:
+  port: 0
