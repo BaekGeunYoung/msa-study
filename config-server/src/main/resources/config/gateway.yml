@@ -1,0 +1,12 @@
+zuul:
+  ignoredServices: '*'
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: auth
+    other1:
+      path: /other1/**
+      serviceId: other1
+    other2:
+      path: /other2/**
+      serviceId: other2
