@@ -12,18 +12,6 @@ class JwtTokenProvider() {
     private lateinit var secretKey: String
     private val validityInMilliseconds: Long = 36000000
 
-    fun createToken(username: String): String {
-        val claims: Claims = Jwts.claims().setSubject(username)
-
-        val validity = Date(Date().time + validityInMilliseconds)
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(Date())
-                .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS512, secretKey)
-                .compact()
-    }
 
     fun getToken(authHeader : String): String {
         return authHeader.substring(7, authHeader.length)
