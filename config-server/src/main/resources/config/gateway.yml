@@ -13,3 +13,6 @@ zuul:
       path: /other2/**
       serviceId: other2
       sensitiveHeaders: Cookie, Set-Cookie
+
+jwt:
+  secretKey: "GEUNYOUNG_JWT_SECRET"
