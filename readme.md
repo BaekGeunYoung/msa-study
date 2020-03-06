@@ -55,3 +55,21 @@ spring cloud 및 netflix OSS를 이용해 MSA를 구축해보기 위한 실습 �
 #### 외부 기능
 
 - 헬스 및 영양 통계 제공
+
+## 초기 디자인
+
+일단 대략적인 다자인만. 디테일은 개발해나가면서 확정할 예정
+
+### 로그인 / 회원가입 페이지
+
+![image1](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.JPG)
+
+### 헬스 / 영양 정보 입력 페이지
+
+![image2](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C2.JPG)
+
+![image3](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C3.JPG)
+
+### 헬스 / 영양 통계 제공 페이지
+
+![image4](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C4.JPG)
