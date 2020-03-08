@@ -22,7 +22,7 @@ class ExerciseController(
     @GetMapping("/")
     fun getExercises(
             @RequestParam("part") part: ExercisePart,
-            @RequestHeader("user_id") userId: Long
+            @RequestHeader("username") username: String
         ): ResponseEntity<List<Exercise>> {
         val exercises = getExerciseService.getExercises(part)
         return ResponseEntity(exercises, HttpStatus.OK)
@@ -31,7 +31,7 @@ class ExerciseController(
     @GetMapping("/{id}")
     fun getExercise(
             @PathVariable("id") exerciseId: Long,
-            @RequestHeader("user_id") userId: Long
+            @RequestHeader("username") username: String
     ): ResponseEntity<Exercise> {
         val exercise = getExerciseService.getExercise(exerciseId)
         return ResponseEntity(exercise, HttpStatus.OK)
@@ -39,16 +39,16 @@ class ExerciseController(
 
     @PostMapping("/histories")
     fun createHistory(
-            @RequestBody @Valid createHistoryReq: ExerciseDto.createHistoryReq,
-            @RequestHeader("user_id") userId: Long
+            @RequestBody @Valid CreateHistoryReq: ExerciseDto.CreateHistoryReq,
+            @RequestHeader("username") username: String
         ): ResponseEntity<ExerciseHistory> {
-        val history = createHistoryService.createHistory(createHistoryReq)
+        val history = createHistoryService.createHistory(CreateHistoryReq, username)
         return ResponseEntity(history, HttpStatus.CREATED)
     }
 
     @GetMapping("/histories")
-    fun getHistories(@RequestHeader("user_id") userId: Long): ResponseEntity<List<ExerciseHistory>> {
-        val histories = getHistoryService.getHistories(userId)
+    fun getHistories(@RequestHeader("username") username: String): ResponseEntity<List<ExerciseHistory>> {
+        val histories = getHistoryService.getHistories(username)
         return ResponseEntity(histories, HttpStatus.OK)
     }
 }

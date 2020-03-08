@@ -7,8 +7,8 @@ data class ExerciseHistory(
         @Id @GeneratedValue
         var id: Long? = null,
 
-        @Column(name = "user_id")
-        var userId: Long,
+        @Column(name = "username")
+        var username: String,
 
         @ManyToOne
         @JoinColumn(name = "exercise_id")
