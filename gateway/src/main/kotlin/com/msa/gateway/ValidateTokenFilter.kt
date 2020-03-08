@@ -1,5 +1,7 @@
 package com.msa.gateway
 
+import com.msa.gateway.exception.CannotFindUserException
+import com.msa.gateway.repository.UserRepository
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 import io.jsonwebtoken.Claims
@@ -9,7 +11,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class ValidateTokenFilter(
-        @Autowired private val jwtTokenProvider: JwtTokenProvider
+        @Autowired private val jwtTokenProvider: JwtTokenProvider,
+        @Autowired private val userRepository: UserRepository
 ) : ZuulFilter() {
     override fun run(): Any? {
         val authHeader = getAuthHeader()
@@ -18,6 +21,7 @@ class ValidateTokenFilter(
         val claims = jwtTokenProvider.resolveToken(token)
         if(jwtTokenProvider.isValid(claims)) {
             val username = claims.subject
+            userRepository.findByUsername(username).orElseThrow { CannotFindUserException(username) }
 
             val context = RequestContext.getCurrentContext()
             context.addZuulRequestHeader("username", username)
