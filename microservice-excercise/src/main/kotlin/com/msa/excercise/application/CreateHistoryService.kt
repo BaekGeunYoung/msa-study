@@ -4,5 +4,5 @@ import com.msa.excercise.domain.ExerciseHistory
 import com.msa.excercise.dto.ExerciseDto
 
 interface CreateHistoryService {
-    fun createHistory(createHistoryReq: ExerciseDto.createHistoryReq): ExerciseHistory
+    fun createHistory(CreateHistoryReq: ExerciseDto.CreateHistoryReq, username: String): ExerciseHistory
 }
