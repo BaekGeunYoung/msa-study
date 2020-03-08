@@ -13,8 +13,6 @@ class GetHistoryServiceImpl(
         @Autowired private val exerciseHistoryRepository: ExerciseHistoryRepository
 ): GetHistoryService {
     override fun getHistories(username: String): List<ExerciseHistory> {
-        val userRes = userServiceClient.getUser(username)
-
         return exerciseHistoryRepository.findByUsername(username)
     }
 }
