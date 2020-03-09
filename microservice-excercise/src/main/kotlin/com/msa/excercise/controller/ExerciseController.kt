@@ -47,8 +47,12 @@ class ExerciseController(
     }
 
     @GetMapping("/histories")
-    fun getHistories(@RequestHeader("username") username: String): ResponseEntity<List<ExerciseHistory>> {
-        val histories = getHistoryService.getHistories(username)
+    fun getHistories(
+            @RequestHeader("username") username: String,
+            @RequestParam("part") part: ExercisePart,
+            @RequestParam("period") period: Int
+    ): ResponseEntity<List<ExerciseHistory>> {
+        val histories = getHistoryService.getHistories(username, part, period)
         return ResponseEntity(histories, HttpStatus.OK)
     }
 }

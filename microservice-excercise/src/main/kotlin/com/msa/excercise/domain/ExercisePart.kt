@@ -6,5 +6,6 @@ enum class ExercisePart {
     SHOULDER,
     BICEPS,
     TRICEPS,
-    ABDOMEN
+    ABDOMEN,
+    ALL
 }
