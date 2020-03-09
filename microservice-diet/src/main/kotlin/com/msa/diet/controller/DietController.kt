@@ -49,9 +49,10 @@ class DietController(
 
     @GetMapping("/histories")
     fun getDietHistories(
-            @RequestHeader("username") username: String
+            @RequestHeader("username") username: String,
+            @RequestParam("period") period: Int
     ): ResponseEntity<List<DietHistory>> {
-        val histories = getDietHistoryService.getHistories(username)
+        val histories = getDietHistoryService.getHistories(username, period)
         return ResponseEntity(histories, HttpStatus.OK)
     }
 }
