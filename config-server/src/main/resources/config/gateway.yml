@@ -5,14 +5,18 @@ zuul:
       path: /auth/**
       serviceId: auth
       sensitiveHeaders: Cookie, Set-Cookie
-    other1:
-      path: /other1/**
-      serviceId: other1
+    exercise:
+      path: /exercise/**
+      serviceId: diet
       sensitiveHeaders: Cookie, Set-Cookie
-    other2:
-      path: /other2/**
-      serviceId: other2
+    diet:
+      path: /diet/**
+      serviceId: diet
       sensitiveHeaders: Cookie, Set-Cookie
-
+    statistics:
+      path: /statistics/**
+      serviceId: statistics
+      sensitiveHeaders: Cookie, Set-Cookie
+      
 jwt:
   secretKey: "GEUNYOUNG_JWT_SECRET"

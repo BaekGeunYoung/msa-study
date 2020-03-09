@@ -1,2 +1,16 @@
 jwt:
   secretKey: "GEUNYOUNG_JWT_SECRET"
+
+spring:
+  datasource:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    url: "jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8"
+    username: "root"
+    password: "dkdltm123"
+
+  jpa:
+    database: "mysql"
+    show-sql: "true"
+    generate-ddl: "true"
+    hibernate:
+      ddl-auto: "create"
