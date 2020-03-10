@@ -1,2 +1,2 @@
 jwt:
-  secretKey: "GEUNYOUNG_JWT_SECRET"
+  secretKey: ${JWT_SECRET_KEY:geunyoung_jwt_secret}

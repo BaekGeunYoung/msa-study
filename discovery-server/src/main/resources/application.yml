@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: "discovery-server"
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+      fail-fast: true
 eureka:
   client:
     register-with-eureka: false

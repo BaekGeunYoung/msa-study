@@ -1,12 +1,12 @@
 jwt:
-  secretKey: "GEUNYOUNG_JWT_SECRET"
+  secretKey: ${JWT_SECRET_KEY:geunyoung_jwt_secret}
 
 spring:
   datasource:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
-    url: "jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8"
+    url: ${MYSQL_CONNECTION_URI:jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8}
     username: "root"
-    password: "dkdltm123"
+    password: ${MYSQL_ROOT_PASSWORD:dkdltm123}
 
   jpa:
     database: "mysql"
