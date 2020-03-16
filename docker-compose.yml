@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  config:
+    image: msa-practice/config
+    environment:
+      MYSQL_CONNECTION_URI: "jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
+    ports:
+      - 8888:8888
+
+  registry:
+    image: msa-practice/registry
+    depends_on:
+      - config
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+    ports:
+      - 8761:8761
+
+  gateway:
+    image: msa-practice/gateway
+    depends_on:
+      - config
+      - registry
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+    ports:
+      - 8080:8080
+
+  auth:
+    image: msa-practice/auth
+    depends_on:
+      - config
+      - registry
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+      EUREKA_SERVER_URI: "http://registry:8761/eureka"
+    ports:
+      - 8081:8080
+
+  diet:
+    image: msa-practice/diet
+    depends_on:
+      - config
+      - registry
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+      EUREKA_SERVER_URI: "http://registry:8761/eureka"
+    ports:
+      - 8082:8080
+
+  exercise:
+    image: msa-practice/exercise
+    depends_on:
+      - config
+      - registry
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+      EUREKA_SERVER_URI: "http://registry:8761/eureka"
+    ports:
+      - 8083:8080
+
+  statistics:
+    image: msa-practice/statistics
+    depends_on:
+      - config
+      - registry
+    environment:
+      CONFIG_SERVER_URI: "http://config:8888"
+      EUREKA_SERVER_URI: "http://registry:8761/eureka"
+    ports:
+      - 8084:8080
+
