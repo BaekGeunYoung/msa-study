@@ -1,0 +1,32 @@
+.auth-container {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .auth-header-container {
+    position: relative;
+    height: 9rem;
+    .auth-header-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid #0000ff;
+      width: 9rem;
+      height: 9rem;
+      background: #ffffff;
+      z-index: 1000;
+    }
+
+    .auth-header-hr {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-color: blue;
+    }
+  }
+}
