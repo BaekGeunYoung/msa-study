@@ -1,10 +1,14 @@
-import React from 'react';
+import React from 'react'
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import StartPage from "./page/StartPage";
 
 function App() {
   return (
-    <div className="App">
-      hello!
-    </div>
+      <BrowserRouter>
+          <Switch>
+              <Route exact path={"/"} component={StartPage} />
+          </Switch>
+      </BrowserRouter>
   );
 }
 
