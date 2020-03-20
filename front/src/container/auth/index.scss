@@ -18,6 +18,9 @@
       height: 9rem;
       background: #ffffff;
       z-index: 1000;
+      .auth-header-img {
+        flex: 1;
+      }
     }
 
     .auth-header-hr {

@@ -47,6 +47,7 @@ const AuthContainer = (props: Props) => {
         <div className={"auth-container"}>
             <div className={"auth-header-container"}>
                 <div className={"auth-header-circle"}>
+                    <img className={"auth-header-img"} src={"/strong.png"} />
                 </div>
                 <hr className={"auth-header-hr"} />
             </div>
