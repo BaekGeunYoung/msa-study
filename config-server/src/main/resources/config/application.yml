@@ -6,7 +6,7 @@ spring:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
     url: ${MYSQL_CONNECTION_URI:jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8}
     username: "root"
-    password: ${MYSQL_ROOT_PASSWORD:dkdltm123}
+    password: ${MYSQL_ROOT_PASSWORD:password}
 
   jpa:
     database: "mysql"
