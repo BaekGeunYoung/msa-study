@@ -13,7 +13,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      border: 1px solid #0000ff;
+      border: 2px solid #4287f5;
       width: 9rem;
       height: 9rem;
       background: #ffffff;
@@ -26,7 +26,21 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      border-color: blue;
+      border-color: #4287f5;
+      border-width: 2px;
+    }
+  }
+
+  .auth-body-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .auth-footer-container {
+    .auth-footer-hr {
+      width: 100%;
+      border-color: #4287f5;
+      border-width: 2px;
     }
   }
 }
