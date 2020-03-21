@@ -6,6 +6,7 @@ interface Props {
     username: string
     password: string
     onChangeLoginState: (e: ChangeEvent<HTMLInputElement>) => void
+    onClickLoginButton: () => void
 }
 
 const Login = (props: Props) => {
@@ -30,7 +31,13 @@ const Login = (props: Props) => {
                 />
             </div>
             <div className={"login-button-container"}>
-                <Button className={"login-button"} color={"primary"}>Login</Button>
+                <Button
+                    className={"login-button"}
+                    color={"primary"}
+                    onClick={props.onClickLoginButton}
+                >
+                    Login
+                </Button>
             </div>
         </div>
     )

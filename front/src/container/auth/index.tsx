@@ -45,6 +45,15 @@ const AuthContainer = (props: Props) => {
         dispatchRegister(action)
     };
 
+    const handleClickLoginButton = () => {
+        alert("로그인")
+        props.history.push("/main")
+    };
+
+    const handleClickRegisterButton = () => {
+        alert("회원가입")
+    };
+
     return (
         <div className={"auth-container"}>
             <div className={"auth-header-container"}>
@@ -57,11 +66,13 @@ const AuthContainer = (props: Props) => {
                 {
                     viewMode === AuthViewMode.LOGIN
                         ? <Login
+                            onClickLoginButton={handleClickLoginButton}
                             onChangeLoginState={handleChangeLoginState}
                             username={loginState.username}
                             password={loginState.password}
                         />
                         : <Register
+                            onClickRegisterButton={handleClickRegisterButton}
                             onChangeRegisterState={handleChangeRegisterState}
                             username={registerState.username}
                             password={registerState.password}

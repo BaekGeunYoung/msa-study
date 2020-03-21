@@ -8,6 +8,7 @@ interface Props {
     firstName: string
     lastName: string
     onChangeRegisterState: (e: ChangeEvent<HTMLInputElement>) => void
+    onClickRegisterButton: () => void
 }
 
 const Register = (props: Props) => {
@@ -34,23 +35,29 @@ const Register = (props: Props) => {
             <div className={"firstName-container"}>
                 <Input
                     className={"register-input"}
-                    name={"password"}
-                    placeholder={"password"}
-                    value={props.password}
+                    name={"firstName"}
+                    placeholder={"first name"}
+                    value={props.firstName}
                     onChange={props.onChangeRegisterState}
                 />
             </div>
             <div className={"lastName-container"}>
                 <Input
                     className={"register-input"}
-                    name={"password"}
-                    placeholder={"password"}
-                    value={props.password}
+                    name={"lastName"}
+                    placeholder={"last name"}
+                    value={props.lastName}
                     onChange={props.onChangeRegisterState}
                 />
             </div>
             <div className={"login-button-container"}>
-                <Button className={"login-button"} color={"primary"}>Login</Button>
+                <Button
+                    className={"login-button"}
+                    color={"success"}
+                    onClick={props.onClickRegisterButton}
+                >
+                    Register
+                </Button>
             </div>
         </div>
     )
