@@ -8,6 +8,7 @@
     position: relative;
     height: 9rem;
     .auth-header-circle {
+      cursor: pointer;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -18,8 +19,27 @@
       height: 9rem;
       background: #ffffff;
       z-index: 1000;
+      transition: transform .2s;
+
       .auth-header-img {
-        flex: 1;
+        width: 60%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.login {
+        border-color: #4287f5;
+      }
+      &.login:hover {
+        border: 2px solid #00c23a;
+      }
+      &.register {
+        border-color: #00c23a;
+      }
+      &.register:hover {
+        border: 2px solid #4287f5;
       }
     }
 
@@ -31,6 +51,13 @@
       transform: translate(-50%, -50%);
       border-color: #4287f5;
       border-width: 2px;
+
+      &.login {
+        border-color: #4287f5;
+      }
+      &.register {
+        border-color: #00c23a;
+      }
     }
   }
 
@@ -44,6 +71,13 @@
       width: 100%;
       border-color: #4287f5;
       border-width: 2px;
+
+      &.login {
+        border-color: #4287f5;
+      }
+      &.register {
+        border-color: #00c23a;
+      }
     }
   }
 }

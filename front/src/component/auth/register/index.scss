@@ -1,0 +1,33 @@
+.register-form-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  margin-bottom: 9rem;
+  .username-container {
+  }
+
+  .password-container {
+    margin-top: 3rem;
+  }
+
+  .firstName-container {
+    margin-top: 3rem;
+  }
+
+  .lastName-container {
+    margin-top: 3rem;
+  }
+
+  .register-input {
+    border-color: #00c23a;
+    border-width: 1.5px;
+  }
+
+  .login-button-container {
+    margin-top: 3rem;
+    width: fit-content;
+    margin-right: 0;
+    float: right;
+  }
+}

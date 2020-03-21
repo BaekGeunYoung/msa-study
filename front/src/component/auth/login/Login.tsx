@@ -5,7 +5,6 @@ import "./index.scss"
 interface Props {
     username: string
     password: string
-    onChangeViewMode: (value: number) => void
     onChangeLoginState: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
