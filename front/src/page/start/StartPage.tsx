@@ -1,6 +1,6 @@
 import React from 'react'
 import {RouteComponentProps} from 'react-router'
-import AuthContainer from "../container/auth";
+import AuthContainer from "../../container/auth";
 
 const StartPage = ({history}: RouteComponentProps) => {
     return(
