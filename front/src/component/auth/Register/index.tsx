@@ -50,9 +50,9 @@ const Register = (props: Props) => {
                     onChange={props.onChangeRegisterState}
                 />
             </div>
-            <div className={"login-button-container"}>
+            <div className={"register-button-container"}>
                 <Button
-                    className={"login-button"}
+                    className={"register-button"}
                     color={"success"}
                     onClick={props.onClickRegisterButton}
                 >

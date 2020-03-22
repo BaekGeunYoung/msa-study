@@ -1,12 +1,11 @@
 import React, {useState, useReducer, ChangeEvent} from 'react';
 import {History} from 'history'
-import {AuthViewMode} from "../../constants";
-import Register from "../../component/auth/register";
-import Login from "../../component/auth/login";
+import {AuthViewMode} from "../../../constants";
+import Register from "../../../component/auth/Register";
+import Login from "../../../component/auth/Login";
 import './index.scss'
-import {loginInitialState, loginReducer} from "../../reducers/LoginReducer";
-import {registerInitialState, registerReducer} from "../../reducers/RegisterReducer";
-import {register} from "../../serviceWorker";
+import {loginInitialState, loginReducer} from "../../../reducers/LoginReducer";
+import {registerInitialState, registerReducer} from "../../../reducers/RegisterReducer";
 
 interface Props {
     history: History

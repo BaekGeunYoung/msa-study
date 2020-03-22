@@ -1,6 +1,6 @@
 import React from 'react'
 import {RouteComponentProps} from 'react-router'
-import AuthContainer from "../../container/auth";
+import AuthContainer from "../../container/auth/AuthContainer";
 
 const StartPage = ({history}: RouteComponentProps) => {
     return(
@@ -12,4 +12,4 @@ const StartPage = ({history}: RouteComponentProps) => {
     )
 };
 
-export default StartPage
+export default StartPage;

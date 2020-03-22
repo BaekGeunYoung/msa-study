@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import {RouteComponentProps} from 'react-router'
 import './index.scss'
 import {MainPageViewMode} from "../../constants";
-import DietDetailContainer from "../../container/detail/diet";
+import DietDetailContainer from "../../container/detail/diet/DietDetailContainer";
 import ExerciseDetailContainer from "../../container/detail/exercise/ExerciseDetailContainer";
-import ExerciseStatisticsContainer from "../../container/statistics/exercise";
-import DietStatisticsContainer from "../../container/statistics/diet";
+import ExerciseStatisticsContainer from "../../container/statistics/exercise/ExerciseStatisticsContainer";
+import DietStatisticsContainer from "../../container/statistics/diet/DietStatisticsContainer";
 
 const MainPage = ({history}: RouteComponentProps) => {
     const [viewMode, setViewMode] = useState(MainPageViewMode.DETAIL)

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
-import DietDetailTable from "../../../component/detail/diet/DietDetailTable/DietDetailTable";
-import {DietDetail} from "../../../type";
+import DietDetailTable from "../../../../component/detail/diet/DietDetailTable";
+import {DietDetail} from "../../../../type";
 
 const DietDetailContainer = () => {
     const dietDetails: Array<DietDetail> = [

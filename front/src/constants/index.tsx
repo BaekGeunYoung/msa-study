@@ -1,5 +1,5 @@
 export const AuthViewMode = {
-    LOGIN: "login",
+    LOGIN: "Login",
     REGISTER: "register"
 };
 

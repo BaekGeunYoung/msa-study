@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import StartPage from "./page/start/StartPage";
-import MainPage from "./page/main/MainPage";
+import StartPage from "./page/StartPage";
+import MainPage from "./page/MainPage";
 
 function App() {
   return (
