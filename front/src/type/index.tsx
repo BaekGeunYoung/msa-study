@@ -13,3 +13,13 @@ export type DietDetail = {
     P: number
     F: number
 }
+
+export enum ExercisePart {
+    CHEST = "CHEST",
+    BACK = "BACK",
+    LEG = "LEG",
+    SHOULDER = "SHOULDER",
+    BICEPS = "BICEPS",
+    TRICEPS = "TRICEPS",
+    ABDOMEN = "ABDOMEN"
+}
