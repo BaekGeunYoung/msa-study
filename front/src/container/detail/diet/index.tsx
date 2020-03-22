@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import DietDetailTable from "../../../component/detail/diet/DietDetailTable";
+import DietDetailTable from "../../../component/detail/diet/DietDetailTable/DietDetailTable";
 import {DietDetail} from "../../../type";
 
 const DietDetailContainer = () => {

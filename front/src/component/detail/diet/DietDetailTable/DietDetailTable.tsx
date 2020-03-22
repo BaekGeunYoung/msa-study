@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, Table} from "reactstrap";
-import {DietDetail} from "../../../type";
+import {Button, Input, Table} from "reactstrap";
+import {DietDetail} from "../../../../type";
 import './index.scss'
 
 interface Props {
@@ -44,6 +44,14 @@ const DietDetailTable = (props: Props) => {
                 </tr>
                 </tfoot>
             </Table>
+            <div>
+                <Input type={"select"}>
+                    <option>qweqwe</option>
+                    <option>qwwe</option>
+                    <option>qweqwe</option>
+                    <option>qweqwe</option>
+                </Input>
+            </div>
             <div className={"add-custom-food-button-container"}>
                 <Button
                     className={"add-custom-food-button"}
