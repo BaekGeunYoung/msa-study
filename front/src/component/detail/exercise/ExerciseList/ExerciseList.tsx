@@ -1,11 +1,13 @@
 import React from 'react';
 import {Button, Input, Table} from 'reactstrap';
 import './index.scss';
+import {IoIosArrowBack} from "react-icons/io";
 
 
 interface Props {
     exercises: Array<string>
     onClickExercise: (exercise: string) => void
+    onClickBackButton: () => void
     selectedExercise: string | undefined
 }
 
@@ -13,9 +15,17 @@ const ExerciseList = (props: Props) => {
     return(
         <div className={"exercise-list-container"}>
             <Table>
-                <thead>
+                <thead className={"exercise-list-table-head"}>
                     <tr>
-                        <th>NAME</th>
+                        <th className={"table-head-content"}>
+                            <div>NAME</div>
+                            <div
+                                className={"back-button"}
+                                onClick={props.onClickBackButton}
+                            >
+                                <IoIosArrowBack/>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

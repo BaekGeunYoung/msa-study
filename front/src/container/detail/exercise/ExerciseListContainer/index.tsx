@@ -4,6 +4,7 @@ import ExerciseList from "../../../../component/detail/exercise/ExerciseList";
 
 interface Props {
     selectedPart: ExercisePart
+    handleClickBackButton: () => void
 }
 
 const ExerciseListContainer = (props: Props) => {
@@ -29,6 +30,7 @@ const ExerciseListContainer = (props: Props) => {
             <ExerciseList
                 exercises={exercises}
                 onClickExercise={handleClickExercise}
+                onClickBackButton={props.handleClickBackButton}
                 selectedExercise={selectedExercise}
             />
         </div>

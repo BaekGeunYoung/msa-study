@@ -1,4 +1,14 @@
 .exercise-list-container {
+  .exercise-list-table-head {
+    .table-head-content {
+      display: flex;
+      flex-direction: row;
+      .back-button {
+        cursor: pointer;
+        margin-left: auto;
+      }
+    }
+  }
   .add-exercise-form-container {
     .add-exercise-title {
       font-size: 2rem;

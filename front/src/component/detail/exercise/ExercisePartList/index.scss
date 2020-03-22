@@ -1,0 +1,12 @@
+.exercise-part-list-container {
+  .table-head {
+    .table-head-content {
+      display: flex;
+      flex-direction: row;
+      .back-button {
+        cursor: pointer;
+        margin-left: auto;
+      }
+    }
+  }
+}

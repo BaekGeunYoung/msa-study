@@ -42,6 +42,10 @@ const ExerciseDetailContainer = () => {
         setSelectedPart(exercisePart)
     };
 
+    const handleClickBackButton = () => {
+        setViewMode(ExerciseDetailViewMode.TABLE)
+    };
+
     return (
         <div className={"exercise-detail-container"}>
             <div className={"exercise-title"}>
@@ -58,9 +62,11 @@ const ExerciseDetailContainer = () => {
                     : viewMode === ExerciseDetailViewMode.LIST ?
                     <ExercisePartList
                         onClickExercisePart={handleClickExercisePart}
+                        onClickBackButton={handleClickBackButton}
                     />
                     : <ExerciseListContainer
                             selectedPart={selectedPart!!}
+                            handleClickBackButton={handleClickBackButton}
                         />
                 }
             </div>

@@ -2,9 +2,11 @@ import React from 'react';
 import './index.scss';
 import {Table} from 'reactstrap';
 import {ExercisePart} from "../../../../type";
+import {IoIosArrowBack} from 'react-icons/io'
 
 interface Props {
     onClickExercisePart: (exercisePart: ExercisePart) => void
+    onClickBackButton: () => void
 }
 
 const ExercisePartList = (props: Props) => {
@@ -19,11 +21,21 @@ const ExercisePartList = (props: Props) => {
     ];
 
     return (
-        <div>
+        <div className={"exercise-part-list-container"}>
             <Table>
-                <thead>
+                <thead className={"table-head"}>
                     <tr>
-                        <th>PART</th>
+                        <th>
+                            <div className={"table-head-content"}>
+                                <div>PART</div>
+                                <div
+                                    className={"back-button"}
+                                    onClick={props.onClickBackButton}
+                                >
+                                    <IoIosArrowBack/>
+                                </div>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
