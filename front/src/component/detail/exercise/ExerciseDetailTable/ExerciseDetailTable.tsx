@@ -1,11 +1,12 @@
 import React from 'react';
 import './index.scss';
 import {Table, Button} from "reactstrap";
-import {ExerciseDetail} from "../../../type";
+import {ExerciseDetail} from "../../../../type";
 
 interface Props {
     exerciseDetails: Array<ExerciseDetail>
     totalVolume: number
+    onClickAddExerciseButton: () => void
 }
 
 const ExerciseDetailTable = (props: Props) => {
@@ -47,6 +48,7 @@ const ExerciseDetailTable = (props: Props) => {
             <div className={"add-exercise-button-container"}>
                 <Button
                     className={"add-exercise-button"}
+                    onClick={props.onClickAddExerciseButton}
                     color={"success"}
                 >
                     Add Exercise
