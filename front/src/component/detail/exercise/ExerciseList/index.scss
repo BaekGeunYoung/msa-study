@@ -1,0 +1,33 @@
+.exercise-list-container {
+  .add-exercise-form-container {
+    .add-exercise-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .add-exercise-form {
+      .selected-exercise {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .add-exercise-input-group {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 2rem;
+        .add-exercise-input {
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+      }
+      .add-exercise-button-container {
+        .add-exercise-button {
+          float: right;
+        }
+        margin-bottom: 3rem;
+      }
+    }
+    .add-exercise-message {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+}
