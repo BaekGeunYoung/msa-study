@@ -3,7 +3,7 @@ import {RouteComponentProps} from 'react-router'
 import './index.scss'
 import {MainPageViewMode} from "../../constants";
 import DietDetailContainer from "../../container/detail/diet";
-import ExerciseDetailContainer from "../../container/detail/exercise";
+import ExerciseDetailContainer from "../../container/detail/exercise/ExerciseDetailContainer";
 import ExerciseStatisticsContainer from "../../container/statistics/exercise";
 import DietStatisticsContainer from "../../container/statistics/diet";
 
