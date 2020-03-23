@@ -23,3 +23,31 @@ export enum ExercisePart {
     TRICEPS = "TRICEPS",
     ABDOMEN = "ABDOMEN"
 }
+
+export type DietStatistics = {
+    date: string
+    quantity: number
+}
+
+export type ExerciseStatistics = {
+    date: string
+    volume: number
+}
+
+export enum DietStatisticsType {
+    CAL = "CAL",
+    C = "C",
+    P = "P",
+    F = "F"
+}
+
+export enum ExerciseStatisticsType {
+    CHEST = "CHEST",
+    BACK = "BACK",
+    LEG = "LEG",
+    SHOULDER = "SHOULDER",
+    BICEPS = "BICEPS",
+    TRICEPS = "TRICEPS",
+    ABDOMEN = "ABDOMEN",
+    ALL = "ALL"
+}
