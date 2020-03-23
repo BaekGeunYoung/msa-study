@@ -1,0 +1,38 @@
+.main-page-container {
+  position: relative;
+  .circle-container {
+    position: relative;
+    height: 9rem;
+    .circle {
+      position: absolute;
+      left : 50%;
+      transform: translate(-50%, -20%);
+      cursor: pointer;
+      &.detail {
+        border: 2px solid #00c23a;
+      }
+      &.statistics {
+        border: 2px solid #ff2b2b;
+      }
+      .main-img {
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      border-radius: 50%;
+      width: 9rem;
+      height: 9rem;
+      background: #ffffff;
+    }
+  }
+
+  .detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
