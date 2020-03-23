@@ -1,0 +1,21 @@
+.diet-statistics-form-container {
+  .diet-statistics-form-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+    .header-title {
+      font-size: 2rem;
+      margin-left: 3rem;
+    }
+    .header-option-group {
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+
+      .header-option {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

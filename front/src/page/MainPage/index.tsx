@@ -29,7 +29,7 @@ const MainPage = ({history}: RouteComponentProps) => {
                         <ExerciseDetailContainer />
                         <DietDetailContainer />
                     </div>
-                    : <div className={"statistics-container"}>
+                    : <div className={"detail-container"}>
                         <ExerciseStatisticsContainer />
                         <DietStatisticsContainer />
                     </div>
