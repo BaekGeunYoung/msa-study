@@ -5,3 +5,6 @@ spring:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:8888}
       fail-fast: true
+
+ribbon:
+  ReadTimeout: 60000
