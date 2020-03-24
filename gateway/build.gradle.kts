@@ -5,6 +5,8 @@ plugins {
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     kotlin("jvm") version "1.3.61"
     kotlin("plugin.spring") version "1.3.61"
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.3.61"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.3.61"
 }
 
 group = "com.msa"
@@ -26,6 +28,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-zuul")
     implementation("io.jsonwebtoken:jjwt:0.9.0")
     implementation("javax.xml.bind:jaxb-api")
+    implementation("mysql:mysql-connector-java")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
