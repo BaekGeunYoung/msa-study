@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: "auth"
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+      fail-fast: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URI:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+jwt:
+  secretKey: ${jwt.secretKey:jwt_secret_key}
+server:
+  port: 0
