@@ -8,16 +8,20 @@ services:
       MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 3306:3306
+    networks:
+      - msa-network
 
   config:
     image: dvmflstm/config
     depends_on:
       - mysql
     environment:
-      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
       MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 8888:8888
+    networks:
+      - msa-network
 
   registry:
     image: dvmflstm/registry
@@ -28,6 +32,8 @@ services:
       CONFIG_SERVER_URI: "http://config:8888"
     ports:
       - 8761:8761
+    networks:
+      - msa-network
 
   gateway:
     image: dvmflstm/gateway
@@ -37,8 +43,13 @@ services:
       - mysql
     environment:
       CONFIG_SERVER_URI: "http://config:8888"
+      EUREKA_SERVER_URI: "http://registry:8761/eureka"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 8080:8080
+    networks:
+      - msa-network
 
   auth:
     image: dvmflstm/auth
@@ -49,9 +60,13 @@ services:
     environment:
       CONFIG_SERVER_URI: "http://config:8888"
       EUREKA_SERVER_URI: "http://registry:8761/eureka"
-      jwt.secretKey: "geunyoung_jwt_secret"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
+      JWT_SECRET_KEY: "geunyoung_jwt_secret"
     ports:
       - 8081:8080
+    networks:
+      - msa-network
 
   diet:
     image: dvmflstm/diet
@@ -62,8 +77,12 @@ services:
     environment:
       CONFIG_SERVER_URI: "http://config:8888"
       EUREKA_SERVER_URI: "http://registry:8761/eureka"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 8082:8080
+    networks:
+      - msa-network
 
   exercise:
     image: dvmflstm/exercise
@@ -74,8 +93,12 @@ services:
     environment:
       CONFIG_SERVER_URI: "http://config:8888"
       EUREKA_SERVER_URI: "http://registry:8761/eureka"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 8083:8080
+    networks:
+      - msa-network
 
   statistics:
     image: dvmflstm/statistics
@@ -86,6 +109,13 @@ services:
     environment:
       CONFIG_SERVER_URI: "http://config:8888"
       EUREKA_SERVER_URI: "http://registry:8761/eureka"
+      MYSQL_CONNECTION_URI: "jdbc:mysql://mysql:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnection=true"
+      MYSQL_ROOT_PASSWORD: "dkdltm123"
     ports:
       - 8084:8080
+    networks:
+      - msa-network
 
+networks:
+  msa-network:
+    external: true
