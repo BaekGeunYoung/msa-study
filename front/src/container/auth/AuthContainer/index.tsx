@@ -1,6 +1,6 @@
 import React, {useState, useReducer, ChangeEvent} from 'react';
 import {History} from 'history'
-import {AuthViewMode} from "../../../constants";
+import {AuthViewMode, TOKEN_KEY} from "../../../constants";
 import Register from "../../../component/auth/Register";
 import Login from "../../../component/auth/Login";
 import './index.scss'
@@ -45,15 +45,17 @@ const AuthContainer = (props: Props) => {
         dispatchRegister(action)
     };
 
-    const handleClickLoginButton = () => {
-        axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, loginState)
-            .then(response => {
-                alert('로그인 성공')
-                props.history.push("/main")
-            })
-
-        alert("로그인 실패지만 메인으로")
-        props.history.push("/main")
+    const handleClickLoginButton = async () => {
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, loginState)
+            const {data} = response;
+            sessionStorage.setItem(TOKEN_KEY, data.token)
+            alert('로그인 성공')
+            props.history.push('/main')
+        } catch (e) {
+            console.log(e)
+            alert('로그인 실패')
+        }
     };
 
     const handleClickRegisterButton = () => {
@@ -61,6 +63,10 @@ const AuthContainer = (props: Props) => {
             .then(response => {
                 alert('회원가입 성공')
                 setViewMode(AuthViewMode.LOGIN)
+            })
+            .catch(e => {
+                alert('회원가입 실패')
+                console.log(e)
             })
     };
 
