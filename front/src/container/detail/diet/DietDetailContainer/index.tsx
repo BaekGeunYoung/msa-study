@@ -1,39 +1,68 @@
-import React from 'react';
+import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import './index.scss';
 import DietDetailTable from "../../../../component/detail/diet/DietDetailTable";
-import {DietDetail} from "../../../../type";
+import {DietDetail, Food} from "../../../../type";
+import {getWithAuth, postWithAuth} from "../../../../utils";
 
 const DietDetailContainer = () => {
-    const dietDetails: Array<DietDetail> = [
-        {
-            name: "one",
-            calorie: 2000,
-            C: 70,
-            P: 20,
-            F: 20
-        },
-        {
-            name: "one",
-            calorie: 2000,
-            C: 70,
-            P: 20,
-            F: 20
-        },
-        {
-            name: "one",
-            calorie: 2000,
-            C: 70,
-            P: 20,
-            F: 20
-        }
-    ];
+    const [foods, setFoods] = useState<Array<Food>>();
+    const [dailyDiet, setDailyDiet] = useState<Array<Food>>();
+    const [selectedFoodId, setSelectedFoodId] = useState<number>();
 
-    const totalDietDetail: DietDetail = {
-        name: "total",
-        calorie: 2000,
-        C: 70,
-        P: 20,
-        F: 20
+    useEffect(() => {
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/diet?q=`)
+            .then(response => response.data)
+            .then(data => {
+                setFoods(data)
+            })
+
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/diet/today`)
+            .then(response => response.data)
+            .then(data => {
+                setDailyDiet(data)
+            })
+    }, []);
+
+    const getTotalDietDetail = () => {
+        const totalCalorie = dailyDiet?.reduce((initValue, currValue, currIndex, array) => {
+            return initValue + currValue.calorie
+        }, 0);
+
+        const totalCarbo = dailyDiet?.reduce((initValue, currValue, currIndex, array) => {
+            return initValue + currValue.carboHydrate
+        }, 0);
+
+        const totalProtein = dailyDiet?.reduce((initValue, currValue, currIndex, array) => {
+            return initValue + currValue.protein
+        }, 0);
+
+        const totalFat = dailyDiet?.reduce((initValue, currValue, currIndex, array) => {
+            return initValue + currValue.fat
+        }, 0);
+
+        return {
+            name: 'total',
+            calorie: totalCalorie,
+            carboHydrate: totalCarbo,
+            protein: totalProtein,
+            fat: totalFat
+        }
+    };
+
+    const handleSelectFood = (e: ChangeEvent<HTMLInputElement>) => {
+        setSelectedFoodId(parseInt(e.target.value))
+    };
+
+    const handleClickAddFood = () => {
+        const data = {
+            foodId: selectedFoodId,
+            date: Date()
+        };
+
+        postWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/`, data)
+            .then(response => {
+                alert('added diet successfully')
+            })
     };
 
     return (
@@ -43,8 +72,12 @@ const DietDetailContainer = () => {
             </div>
             <div>
                 <DietDetailTable
-                    dietDetails={dietDetails}
-                    totalDietDetail={totalDietDetail}
+                    dietDetails={foods}
+                    totalDietDetail={getTotalDietDetail()}
+                    foods={foods}
+                    selectedFoodId={selectedFoodId}
+                    onSelectFood={handleSelectFood}
+                    onClickAddFood={handleClickAddFood}
                 />
             </div>
         </div>

@@ -2,6 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import ExerciseStatisticsForm from "../../../../component/statistics/exercise/ExerciseStatisticsForm";
 import {ExerciseStatistics, ExerciseStatisticsType} from "../../../../type";
 import './index.scss';
+import {getWithAuth} from "../../../../utils";
 
 const ExerciseStatisticsContainer = () => {
     const [exerciseStatistics, setExerciseStatistics] = useState<Array<ExerciseStatistics>>();
@@ -9,22 +10,11 @@ const ExerciseStatisticsContainer = () => {
     const [type, setType] = useState<ExerciseStatisticsType>(ExerciseStatisticsType.ALL);
 
     useEffect(() => {
-        //TODO exercise에 대한 통계 정보 받아오기
-        const data: Array<ExerciseStatistics> = [
-            {
-                date: "2020-03-21",
-                volume: 100
-            },
-            {
-                date: "2020-03-22",
-                volume: 150
-            },
-            {
-                date: "2020-03-23",
-                volume: 200
-            },
-        ];
-        setExerciseStatistics(data)
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/exercise`)
+            .then(response => response.data)
+            .then(data => {
+                setExerciseStatistics(data)
+            })
     }, []);
 
     const handleChangePeriod = (e: ChangeEvent<HTMLInputElement>) => {

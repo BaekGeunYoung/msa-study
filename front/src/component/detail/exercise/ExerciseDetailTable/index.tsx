@@ -1,11 +1,11 @@
 import React from 'react';
 import './index.scss';
 import {Table, Button} from "reactstrap";
-import {ExerciseDetail} from "../../../../type";
+import {Exercise, ExerciseDetail} from "../../../../type";
 
 interface Props {
-    exerciseDetails: Array<ExerciseDetail>
-    totalVolume: number
+    exerciseDetails: Array<ExerciseDetail> | undefined
+    totalVolume: number | undefined
     onClickAddExerciseButton: () => void
 }
 
@@ -24,7 +24,7 @@ const ExerciseDetailTable = (props: Props) => {
                 </thead>
                 <tbody>
                 {
-                    props.exerciseDetails.map(exerciseDetail =>
+                    props.exerciseDetails?.map(exerciseDetail =>
                         <tr>
                             <td>{exerciseDetail.name}</td>
                             <td>{exerciseDetail.weight}</td>

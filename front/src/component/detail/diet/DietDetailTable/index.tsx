@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {Button, Input, Table} from "reactstrap";
-import {DietDetail} from "../../../../type";
+import {DietDetail, Food, TotalDietDetail} from "../../../../type";
 import './index.scss'
 
 interface Props {
-    dietDetails: Array<DietDetail>
-    totalDietDetail: DietDetail
+    dietDetails: Array<Food> | undefined
+    totalDietDetail: TotalDietDetail
+    foods: Array<Food> | undefined
+    selectedFoodId: number | undefined
+    onSelectFood: (e: ChangeEvent<HTMLInputElement>) => void
+    onClickAddFood: () => void
 }
 
 const DietDetailTable = (props: Props) => {
@@ -23,13 +27,13 @@ const DietDetailTable = (props: Props) => {
                 </thead>
                 <tbody>
                 {
-                    props.dietDetails.map(dietDetail =>
+                    props.dietDetails?.map(dietDetail =>
                         <tr>
                             <td>{dietDetail.name}</td>
                             <td>{dietDetail.calorie}</td>
-                            <td>{dietDetail.C}</td>
-                            <td>{dietDetail.P}</td>
-                            <td>{dietDetail.F}</td>
+                            <td>{dietDetail.carboHydrate}</td>
+                            <td>{dietDetail.protein}</td>
+                            <td>{dietDetail.fat}</td>
                         </tr>
                     )
                 }
@@ -38,26 +42,26 @@ const DietDetailTable = (props: Props) => {
                 <tr>
                     <th>Total</th>
                     <th>{props.totalDietDetail.calorie}</th>
-                    <th>{props.totalDietDetail.C}</th>
-                    <th>{props.totalDietDetail.P}</th>
-                    <th>{props.totalDietDetail.F}</th>
+                    <th>{props.totalDietDetail.carboHydrate}</th>
+                    <th>{props.totalDietDetail.protein}</th>
+                    <th>{props.totalDietDetail.fat}</th>
                 </tr>
                 </tfoot>
             </Table>
             <div>
-                <Input type={"select"}>
-                    <option>qweqwe</option>
-                    <option>qwwe</option>
-                    <option>qweqwe</option>
-                    <option>qweqwe</option>
+                <Input type={"select"} onChange={props.onSelectFood} value={props.selectedFoodId}>
+                    {
+                        props.foods?.map(food => <option>{food.name}</option>)
+                    }
                 </Input>
             </div>
             <div className={"add-custom-food-button-container"}>
                 <Button
+                    onClick={props.onClickAddFood}
                     className={"add-custom-food-button"}
                     color={"success"}
                 >
-                    Add Custom Food
+                    Add Food
                 </Button>
             </div>
         </div>

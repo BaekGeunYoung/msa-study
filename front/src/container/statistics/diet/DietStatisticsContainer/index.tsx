@@ -2,6 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import {DietStatistics, DietStatisticsType} from "../../../../type";
 import DietStatisticsForm from "../../../../component/statistics/diet/DietStatisticsForm";
 import './index.scss';
+import {getWithAuth} from "../../../../utils";
 
 const DietStatisticsContainer = () => {
     const [dietStatistics, setDietStatistics] = useState<Array<DietStatistics>>();
@@ -9,22 +10,11 @@ const DietStatisticsContainer = () => {
     const [type, setType] = useState<DietStatisticsType>(DietStatisticsType.CAL);
 
     useEffect(() => {
-        //TODO diet에 대한 통계 정보 받아오기
-        const data: Array<DietStatistics> = [
-            {
-                date: "2020-03-21",
-                quantity: 100
-            },
-            {
-                date: "2020-03-22",
-                quantity: 200
-            },
-            {
-                date: "2020-03-23",
-                quantity: 300
-            },
-        ];
-        setDietStatistics(data)
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/diet`)
+            .then(response => response.data)
+            .then(data => {
+                setDietStatistics(data)
+            })
     }, []);
 
     const handleChangePeriod = (e: ChangeEvent<HTMLInputElement>) => {

@@ -13,3 +13,5 @@ export const ExerciseDetailViewMode = {
     LIST: "list",
     DETAIL: "detail"
 };
+
+export const TOKEN_KEY = 'access_token'

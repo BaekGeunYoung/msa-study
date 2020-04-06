@@ -6,6 +6,7 @@ import Login from "../../../component/auth/Login";
 import './index.scss'
 import {loginInitialState, loginReducer} from "../../../reducers/LoginReducer";
 import {registerInitialState, registerReducer} from "../../../reducers/RegisterReducer";
+import axios from 'axios';
 
 interface Props {
     history: History
@@ -45,12 +46,22 @@ const AuthContainer = (props: Props) => {
     };
 
     const handleClickLoginButton = () => {
-        alert("로그인")
+        axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, loginState)
+            .then(response => {
+                alert('로그인 성공')
+                props.history.push("/main")
+            })
+
+        alert("로그인 실패지만 메인으로")
         props.history.push("/main")
     };
 
     const handleClickRegisterButton = () => {
-        alert("회원가입")
+        axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/register`, registerState)
+            .then(response => {
+                alert('회원가입 성공')
+                setViewMode(AuthViewMode.LOGIN)
+            })
     };
 
     return (

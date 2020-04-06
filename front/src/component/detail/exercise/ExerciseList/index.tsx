@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {Button, Input, Table} from 'reactstrap';
 import './index.scss';
 import {IoIosArrowBack} from "react-icons/io";
+import {Exercise} from "../../../../type";
 
 
 interface Props {
-    exercises: Array<string>
-    onClickExercise: (exercise: string) => void
+    exercises: Array<Exercise>
+    onClickExercise: (exercise: Exercise) => void
+    onClickAddExercise: () => void
     onClickBackButton: () => void
-    selectedExercise: string | undefined
+    selectedExercise: Exercise | undefined
+    weight: number
+    reps: number
+    sets: number
+    onChangeInput: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const ExerciseList = (props: Props) => {
@@ -32,7 +38,7 @@ const ExerciseList = (props: Props) => {
                 {
                     props.exercises.map(exercise =>
                         <tr onClick={() => props.onClickExercise(exercise)}>
-                            <td>{exercise}</td>
+                            <td>{exercise.name}</td>
                         </tr>
                     )
                 }
@@ -50,20 +56,30 @@ const ExerciseList = (props: Props) => {
                         </div>
                         <div className={"add-exercise-input-group"}>
                             <Input
+                                name={"weight"}
                                 className={"add-exercise-input"}
                                 placeholder={"weight"}
+                                value={props.weight}
+                                onChange={props.onChangeInput}
                             />
                             <Input
+                                name={"reps"}
                                 className={"add-exercise-input"}
                                 placeholder={"reps"}
+                                value={props.reps}
+                                onChange={props.onChangeInput}
                             />
                             <Input
+                                name={"sets"}
                                 className={"add-exercise-input"}
                                 placeholder={"sets"}
+                                value={props.sets}
+                                onChange={props.onChangeInput}
                             />
                         </div>
                         <div className={"add-exercise-button-container"}>
                             <Button
+                                onClick={props.onClickAddExercise}
                                 className={"add-exercise-button"}
                                 color={"success"}
                             >Add</Button>

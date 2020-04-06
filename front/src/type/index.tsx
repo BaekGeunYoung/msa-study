@@ -29,9 +29,32 @@ export type DietStatistics = {
     quantity: number
 }
 
+export type Food = {
+    id: number,
+    name: string,
+    calorie: number,
+    carboHydrate: number,
+    protein: number,
+    fat: number
+}
+
+export type TotalDietDetail = {
+    name: string,
+    calorie: number | undefined,
+    carboHydrate: number | undefined,
+    protein: number | undefined,
+    fat: number | undefined
+}
+
 export type ExerciseStatistics = {
     date: string
     volume: number
+}
+
+export type Exercise = {
+    id: number,
+    name: string,
+    part: ExercisePart
 }
 
 export enum DietStatisticsType {
