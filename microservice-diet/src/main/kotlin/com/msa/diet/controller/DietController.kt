@@ -55,4 +55,12 @@ class DietController(
         val histories = getDietHistoryService.getHistories(username, period)
         return ResponseEntity(histories, HttpStatus.OK)
     }
+
+    @GetMapping("/today")
+    fun getDailyDiet(
+            @RequestHeader("username") username: String
+    ): ResponseEntity<List<DietHistory>> {
+        val dailyDietHistories = getDietHistoryService.getDailyHistories(username)
+        return ResponseEntity(dailyDietHistories, HttpStatus.OK)
+    }
 }

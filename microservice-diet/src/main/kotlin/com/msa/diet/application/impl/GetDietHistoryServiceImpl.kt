@@ -22,4 +22,9 @@ class GetDietHistoryServiceImpl(
         return dietHistoryRepository.findById(historyId)
                 .orElseThrow { CannotFindHistoryException(historyId) }
     }
+
+    override fun getDailyHistories(username: String): List<DietHistory> {
+        val today = LocalDate.now()
+        return dietHistoryRepository.findByUsernameAndDate(username, today)
+    }
 }
