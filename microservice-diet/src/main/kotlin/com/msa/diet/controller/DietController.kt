@@ -29,15 +29,6 @@ class DietController(
         return ResponseEntity(foods, HttpStatus.OK)
     }
 
-    @PostMapping("/")
-    fun createDietHistory(
-            @RequestHeader("username") username: String,
-            @RequestBody @Valid createDietHistoryReq: DietHistoryDto.CreateDietHistoryReq
-    ): ResponseEntity<DietHistory> {
-        val dietHistory = createDietHistoryService.create(username, createDietHistoryReq)
-        return ResponseEntity(dietHistory, HttpStatus.CREATED)
-    }
-
     @DeleteMapping("/{id}")
     fun deleteDietHistory(
             @RequestHeader("username") username: String,
@@ -45,6 +36,15 @@ class DietController(
     ): ResponseEntity<Unit> {
         deleteDietHistoryService.delete(username, dietHistoryId)
         return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+    @PostMapping("/histories")
+    fun createDietHistory(
+            @RequestHeader("username") username: String,
+            @RequestBody @Valid createDietHistoryReq: DietHistoryDto.CreateDietHistoryReq
+    ): ResponseEntity<DietHistory> {
+        val dietHistory = createDietHistoryService.create(username, createDietHistoryReq)
+        return ResponseEntity(dietHistory, HttpStatus.CREATED)
     }
 
     @GetMapping("/histories")
