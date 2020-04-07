@@ -1,9 +1,6 @@
 package com.msa.excercise.domain
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class Exercise(
@@ -14,5 +11,6 @@ data class Exercise(
         var name: String,
 
         @Column(name = "part")
+        @Enumerated(EnumType.STRING)
         var part: ExercisePart
 )
