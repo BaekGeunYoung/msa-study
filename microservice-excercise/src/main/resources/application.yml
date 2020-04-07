@@ -13,3 +13,8 @@ eureka:
       enabled: true
 server:
   port: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["env", "refresh"]

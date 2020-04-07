@@ -8,3 +8,9 @@ spring:
 
 ribbon:
   ReadTimeout: 60000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["env", "refresh"]
