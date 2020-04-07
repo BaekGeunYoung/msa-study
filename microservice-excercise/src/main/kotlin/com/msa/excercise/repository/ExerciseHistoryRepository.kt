@@ -20,4 +20,9 @@ interface ExerciseHistoryRepository : JpaRepository<ExerciseHistory, Long> {
             date: LocalDate,
             date2: LocalDate
     ): List<ExerciseHistory>
+
+    fun findByUsernameAndDate(
+            username: String,
+            date: LocalDate
+    ): List<ExerciseHistory>
 }

@@ -21,4 +21,9 @@ class GetHistoryServiceImpl(
             exerciseHistoryRepository.findByUsernameAndDateBetween(username, from, to)
         else exerciseHistoryRepository.findByUsernameAndExercise_PartAndDateBetween(username, part, from, to)
     }
+
+    override fun getDailyHistories(username: String): List<ExerciseHistory> {
+        val today = LocalDate.now()
+        return exerciseHistoryRepository.findByUsernameAndDate(username, today)
+    }
 }

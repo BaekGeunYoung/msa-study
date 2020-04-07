@@ -5,4 +5,5 @@ import com.msa.excercise.domain.ExercisePart
 
 interface GetHistoryService {
     fun getHistories(username: String, part: ExercisePart, period: Int): List<ExerciseHistory>
+    fun getDailyHistories(username: String): List<ExerciseHistory>
 }
