@@ -9,6 +9,14 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version "1.3.61"
 }
 
+noArg {
+    annotation("javax.persistence.Entity")
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+}
+
 group = "com.msa"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
