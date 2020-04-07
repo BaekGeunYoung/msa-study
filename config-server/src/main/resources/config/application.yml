@@ -4,7 +4,7 @@ jwt:
 spring:
   datasource:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
-    url: ${MYSQL_CONNECTION_URI:jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8}
+    url: ${MYSQL_CONNECTION_URI:jdbc:mysql://localhost:3306/test_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
     username: "root"
     password: ${MYSQL_ROOT_PASSWORD:dkdltm123}
 
