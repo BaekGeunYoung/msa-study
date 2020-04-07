@@ -7,7 +7,7 @@ zuul:
       sensitiveHeaders: Cookie, Set-Cookie
     exercise:
       path: /exercise/**
-      serviceId: diet
+      serviceId: exercise
       sensitiveHeaders: Cookie, Set-Cookie
     diet:
       path: /diet/**
