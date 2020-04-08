@@ -41,7 +41,9 @@ const ExercisePartList = (props: Props) => {
                 <tbody>
                 {
                     exercisePartList.map(exercisePart =>
-                        <tr onClick={() => props.onClickExercisePart(exercisePart)}>
+                        <tr onClick={() => props.onClickExercisePart(exercisePart)}
+                            key={exercisePart}
+                        >
                             <td>{exercisePart}</td>
                         </tr>
                     )

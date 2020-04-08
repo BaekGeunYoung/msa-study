@@ -10,7 +10,7 @@ const ExerciseStatisticsContainer = () => {
     const [type, setType] = useState<ExerciseStatisticsType>(ExerciseStatisticsType.ALL);
 
     useEffect(() => {
-        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/exercise`)
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/exercise?period=${period}&part=${type}`)
             .then(response => response.data)
             .then(data => {
                 setExerciseStatistics(data)

@@ -52,7 +52,7 @@ const ExerciseList = (props: Props) => {
                     props.selectedExercise ?
                     <div className={"add-exercise-form"}>
                         <div className={"selected-exercise"}>
-                            exercise : {props.selectedExercise}
+                            exercise : {props.selectedExercise.name}
                         </div>
                         <div className={"add-exercise-input-group"}>
                             <Input
