@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useReducer, useState} from 'react';
 import {Exercise, ExercisePart} from "../../../../type";
 import ExerciseList from "../../../../component/detail/exercise/ExerciseList";
-import {getWithAuth} from "../../../../utils";
+import {getWithAuth, postWithAuth} from "../../../../utils";
 import {
     exerciseInputInitialState,
     exerciseInputReducer
@@ -30,9 +30,21 @@ const ExerciseListContainer = (props: Props) => {
     };
 
     const handleClickAddExercise = () => {
-        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/exercise?part=${props.selectedPart}`)
+        const data = {
+            'exerciseId': selectedExercise!!.id,
+            'set': exerciseInputState.sets,
+            'rep': exerciseInputState.reps,
+            'weight': exerciseInputState.weight,
+            'date': Date.now()
+        };
+
+        postWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/exercise/histories`, data)
             .then(response => {
                 alert('added exercise successfully')
+            })
+            .catch(e => {
+                alert('add exercise fail')
+                console.log(e)
             })
     };
 

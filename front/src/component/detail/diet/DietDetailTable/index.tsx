@@ -4,7 +4,7 @@ import {DietDetail, Food, TotalDietDetail} from "../../../../type";
 import './index.scss'
 
 interface Props {
-    dietDetails: Array<Food> | undefined
+    dailyDiet: Array<Food> | undefined
     totalDietDetail: TotalDietDetail
     foods: Array<Food> | undefined
     selectedFoodId: number | undefined
@@ -27,8 +27,8 @@ const DietDetailTable = (props: Props) => {
                 </thead>
                 <tbody>
                 {
-                    props.dietDetails?.map(dietDetail =>
-                        <tr>
+                    props.dailyDiet?.map(dietDetail =>
+                        <tr key={dietDetail.id}>
                             <td>{dietDetail.name}</td>
                             <td>{dietDetail.calorie}</td>
                             <td>{dietDetail.carboHydrate}</td>
@@ -49,9 +49,9 @@ const DietDetailTable = (props: Props) => {
                 </tfoot>
             </Table>
             <div>
-                <Input type={"select"} onChange={props.onSelectFood} value={props.selectedFoodId}>
+                <Input type={"select"} onSelect={props.onSelectFood} value={props.selectedFoodId}>
                     {
-                        props.foods?.map(food => <option>{food.name}</option>)
+                        props.foods?.map(food => <option key={food.id}>{food.name}</option>)
                     }
                 </Input>
             </div>

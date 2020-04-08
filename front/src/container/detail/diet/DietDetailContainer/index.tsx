@@ -56,12 +56,16 @@ const DietDetailContainer = () => {
     const handleClickAddFood = () => {
         const data = {
             foodId: selectedFoodId,
-            date: Date()
+            date: Date.now()
         };
 
-        postWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/`, data)
+        postWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/diet/histories`, data)
             .then(response => {
                 alert('added diet successfully')
+            })
+            .catch(e => {
+                alert('add diet fail')
+                console.log(e)
             })
     };
 
@@ -72,7 +76,7 @@ const DietDetailContainer = () => {
             </div>
             <div>
                 <DietDetailTable
-                    dietDetails={foods}
+                    dailyDiet={dailyDiet}
                     totalDietDetail={getTotalDietDetail()}
                     foods={foods}
                     selectedFoodId={selectedFoodId}
