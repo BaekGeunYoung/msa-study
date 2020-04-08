@@ -56,20 +56,10 @@ spring cloud 및 netflix OSS를 이용해 MSA를 구축해보기 위한 실습 �
 
 - 헬스 및 영양 통계 제공
 
-## 초기 디자인
+## Docker
 
-일단 대략적인 다자인만. 디테일은 개발해나가면서 확정할 예정
+![docker](./images/docker-structure.PNG)
 
-### 로그인 / 회원가입 페이지
+### MSA와 Docker
 
-![image1](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.JPG)
-
-### 헬스 / 영양 정보 입력 페이지
-
-![image2](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C2.JPG)
-
-![image3](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C3.JPG)
-
-### 헬스 / 영양 통계 제공 페이지
-
-![image4](https://github.com/BaekGeunYoung/msa-study/blob/master/images/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C4.JPG)
+msa와 docker는 뗄레야 뗄 수 없는 관계에 있다고 생각한다. 도커를 기반으로 하여 AWS fargate 혹은 kubernetes등을 통해 이루어지는 컨테이너 오케스트레이션은 microservice 별로 scale-out이 가능하다는 MSA의 장점과 특히 잘어울린다. 이번 장에서는 MSA로 만든 어플리케이션을 도커라이징하는 과정을 설명하려 한다.
