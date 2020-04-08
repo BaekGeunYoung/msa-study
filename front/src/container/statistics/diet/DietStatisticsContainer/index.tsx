@@ -10,7 +10,7 @@ const DietStatisticsContainer = () => {
     const [type, setType] = useState<DietStatisticsType>(DietStatisticsType.CAL);
 
     useEffect(() => {
-        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/diet`)
+        getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/statistics/diet?period=${period}&option=${type}`)
             .then(response => response.data)
             .then(data => {
                 setDietStatistics(data)
