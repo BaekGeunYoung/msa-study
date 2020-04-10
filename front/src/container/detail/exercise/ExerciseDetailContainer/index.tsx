@@ -14,7 +14,14 @@ const ExerciseDetailContainer = () => {
         getWithAuth(`${process.env.REACT_APP_API_ENDPOINT}/exercise/today`)
             .then(response => response.data)
             .then(data => {
-                setDailyExercise(data)
+                const dataVolumeAppended = data.map((exerciseDetail: ExerciseDetail) => {
+                    return {
+                        ...exerciseDetail,
+                        volume: exerciseDetail.rep * exerciseDetail.set * exerciseDetail.weight
+                    }
+                });
+
+                setDailyExercise(dataVolumeAppended)
             });
     }, []);
 

@@ -26,7 +26,7 @@ const ExerciseDetailTable = (props: Props) => {
                 {
                     props.exerciseDetails?.map(exerciseDetail =>
                         <tr>
-                            <td>{exerciseDetail.name}</td>
+                            <td>{exerciseDetail.exercise.name}</td>
                             <td>{exerciseDetail.weight}</td>
                             <td>{exerciseDetail.rep}</td>
                             <td>{exerciseDetail.set}</td>

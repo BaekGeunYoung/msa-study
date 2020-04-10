@@ -1,14 +1,14 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, SyntheticEvent} from 'react';
 import {Button, Input, Table} from "reactstrap";
 import {DietDetail, Food, TotalDietDetail} from "../../../../type";
 import './index.scss'
 
 interface Props {
-    dailyDiet: Array<Food> | undefined
+    dailyDiet: Array<DietDetail> | undefined
     totalDietDetail: TotalDietDetail
     foods: Array<Food> | undefined
     selectedFoodId: number | undefined
-    onSelectFood: (e: ChangeEvent<HTMLInputElement>) => void
+    onSelectFood: (e: ChangeEvent<HTMLSelectElement>) => void
     onClickAddFood: () => void
 }
 
@@ -29,11 +29,11 @@ const DietDetailTable = (props: Props) => {
                 {
                     props.dailyDiet?.map(dietDetail =>
                         <tr key={dietDetail.id}>
-                            <td>{dietDetail.name}</td>
-                            <td>{dietDetail.calorie}</td>
-                            <td>{dietDetail.carboHydrate}</td>
-                            <td>{dietDetail.protein}</td>
-                            <td>{dietDetail.fat}</td>
+                            <td>{dietDetail.food.name}</td>
+                            <td>{dietDetail.food.calorie}</td>
+                            <td>{dietDetail.food.carboHydrate}</td>
+                            <td>{dietDetail.food.protein}</td>
+                            <td>{dietDetail.food.fat}</td>
                         </tr>
                     )
                 }
@@ -49,11 +49,12 @@ const DietDetailTable = (props: Props) => {
                 </tfoot>
             </Table>
             <div>
-                <Input type={"select"} onSelect={props.onSelectFood} value={props.selectedFoodId}>
+                <select className={"food-select-box"} onChange={(e) => props.onSelectFood(e)} value={props.selectedFoodId} defaultValue={-1}>
+                    <option value={-1}>Select food to add.</option>
                     {
-                        props.foods?.map(food => <option key={food.id}>{food.name}</option>)
+                        props.foods?.map(food => <option key={food.id} value={food.id}>{food.name}</option>)
                     }
-                </Input>
+                </select>
             </div>
             <div className={"add-custom-food-button-container"}>
                 <Button
