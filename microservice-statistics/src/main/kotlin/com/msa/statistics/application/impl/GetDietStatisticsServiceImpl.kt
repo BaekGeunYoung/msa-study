@@ -15,31 +15,32 @@ class GetDietStatisticsServiceImpl(
     override fun get(username: String, dietOption: DietDto.DietOption, period: Int): List<DietStatistics> {
         val dietHistories = dietServiceClient.getDietHistories(username, period)
 
-        val dietStatistics = when(dietOption) {
-            DietDto.DietOption.CAL -> dietHistories.map { DietStatistics(it.food.calorie, it.date) }.toMutableList()
-            DietDto.DietOption.C -> dietHistories.map { DietStatistics(it.food.carboHydrate, it.date) }.toMutableList()
-            DietDto.DietOption.P -> dietHistories.map { DietStatistics(it.food.protein, it.date) }.toMutableList()
-            DietDto.DietOption.F -> dietHistories.map { DietStatistics(it.food.fat, it.date) }.toMutableList()
-        }
+        val groupByDate = dietHistories.groupBy { it.date }
 
         val from = LocalDate.now().minusMonths(period.toLong())
         val to = LocalDate.now()
 
+        val statistics = mutableListOf<DietStatistics>()
+
         from.datesUntil(to).forEach {
             var contains = false
-            for(dietStat in dietStatistics) {
-                if(dietStat.date == it) {
+            val keys = groupByDate.keys.iterator()
+
+            while(keys.hasNext()) {
+                val targetDate = keys.next()
+                if(targetDate == it) {
                     contains = true
+                    statistics.add(DietStatistics.of(targetDate, groupByDate[targetDate] ?: error("no such key"), dietOption))
                     break
                 }
             }
             if(!contains) {
-                dietStatistics.add(DietStatistics(0, it))
+                statistics.add(DietStatistics(0, it))
             }
         }
 
-        dietStatistics.sortByDescending { it.date }
+        statistics.sortByDescending { it.date }
 
-        return dietStatistics
+        return statistics
     }
 }

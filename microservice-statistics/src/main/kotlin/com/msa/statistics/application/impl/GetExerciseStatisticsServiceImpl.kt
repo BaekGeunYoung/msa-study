@@ -1,11 +1,13 @@
 package com.msa.statistics.application.impl
 
+import com.fasterxml.jackson.databind.util.ArrayBuilders
 import com.msa.statistics.application.GetExerciseStatisticsService
 import com.msa.statistics.dto.ExerciseDto
 import com.msa.statistics.dto.ExerciseStatistics
 import com.msa.statistics.feign.ExerciseServiceClient
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.lang.StringBuilder
 import java.time.LocalDate
 
 @Service
@@ -20,12 +22,17 @@ class GetExerciseStatisticsServiceImpl(
 
         val statistics = mutableListOf<ExerciseStatistics>()
 
+        val groupByDate = exerciseHistories.groupBy { it.date }
+
         from.datesUntil(to).forEach {
             var contains = false
-            for (exerciseHistory in exerciseHistories) {
-                if(exerciseHistory.date == it) {
+            val keys = groupByDate.keys.iterator()
+
+            while(keys.hasNext()) {
+                val targetDate = keys.next()
+                if(targetDate == it) {
                     contains = true
-                    statistics.add(ExerciseStatistics.of(exerciseHistory))
+                    statistics.add(ExerciseStatistics.of(targetDate, groupByDate[targetDate] ?: error("no such key")))
                     break
                 }
             }
