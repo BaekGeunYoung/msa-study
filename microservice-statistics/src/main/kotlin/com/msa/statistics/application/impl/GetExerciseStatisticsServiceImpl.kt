@@ -41,7 +41,7 @@ class GetExerciseStatisticsServiceImpl(
             }
         }
 
-        statistics.sortByDescending { it.date }
+        statistics.sortBy { it.date }
 
         return statistics
     }
