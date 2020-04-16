@@ -56,6 +56,12 @@ spring cloud 및 netflix OSS를 이용해 MSA를 구축해보기 위한 실습 �
 
 - 헬스 및 영양 통계 제공
 
+## 아키텍쳐
+
+![architecture](https://media.vlpt.us/images/dvmflstm/post/5fd22723-a42c-44d2-b587-030c9beccbdb/image.png)
+
+직접적인 API 서버 역할을 하는 마이크로서비스는 총 4개이며, 이들은 모두 gateway를 진입점으로 하여 접근할 수 있다. gateway에서는 사용자 인증에 관한 처리를 담당하며, 본 실습에서는 이 gateway에서 jwt를 복호화해 사용자 정보를 downstream microservice에 넘겨주도록 설정했다.
+
 ## Docker
 
 ![docker](./images/docker-structure.PNG)
